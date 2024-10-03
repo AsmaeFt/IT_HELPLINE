@@ -1,0 +1,156 @@
+/* OverLay */
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.overlayconainer {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 73%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: -2;
+}
+
+.video-container video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+}
+/* NavBar */
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 2px solid red;
+  transition: all 0.3s ease;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 7%;
+  background-color: #000000;
+  backdrop-filter: blur(7px);
+}
+
+.navbar-container ul {
+  display: flex;
+  gap: 0.8rem;
+  list-style-type: none;
+  margin: 0;
+  align-items: center;
+}
+
+.navbar-container ul li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.navbar-brand a {
+  text-decoration: none;
+  font-weight: bold;
+}
+.logo {
+  max-width: 9rem;
+}
+
+.User {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-text-color);
+}
+.LogOut {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.LogOut img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/*Side bar*/
+.SideBar-Container {
+  width: 30vh;
+  background-image: linear-gradient(
+    120deg,
+    rgba(58, 58, 58, 0.397),
+    rgba(255, 0, 0, 0.068),
+    rgba(0, 0, 0, 0.158)
+  );
+  color: orangered;
+  backdrop-filter: blur(4px);
+  animation: Right 0.8s ease-in-out;
+}
+/*Side bar*/
+
+@keyframes Right {
+  from {
+    transform: translateX(-5rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.user-pro {
+  background-color: #f0f8ff38;
+  height: 10em;
+  align-content: center;
+}
+.Services {
+  display: flex;
+  justify-content: center;
+  height: 10em;
+  align-items: center;
+  width: 100%;
+}
+.Services ul li {
+  margin-top: 1em;
+
+  cursor: pointer;
+  width: 100%;
+}
+.Services ul li a {
+  text-decoration: none;
+  color: var(--primary-text-color);
+  display: flex;
+  align-items: center;
+}
+.Services ul li img {
+  margin-right: 0.4em;
+}
+.log {
+  padding: 0 1rem;
+  border: 1px solid orangered;
+  border-radius: 21px;
+  cursor: pointer;
+  animation: Right 0.5s ease-in-out;
+}
+
+/*Side bar*/

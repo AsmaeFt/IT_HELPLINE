@@ -1,0 +1,52 @@
+.main {
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  position: absolute;
+}
+
+.blinkText h2 {
+  width: 22ch;
+  animation: typing 1.7s steps(22), blink 0.5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-size: 2em;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.main button {
+  padding: 0.7rem;
+  margin-right: 1.3rem;
+  border-radius: 17px;
+
+  font-weight: 600;
+  width: 14rem;
+  cursor: pointer;
+
+  transition: all 0.3s ease-in-out;
+}
+.main button:nth-child(1) {
+  border: none;
+  background-color: #950101;
+}
+.main button:nth-child(2) {
+  background-color: transparent;
+  border: 2px solid #950101;
+}
+
+.main button:hover {
+  background-color: rgb(255, 255, 255);
+  color: #950101;
+}
