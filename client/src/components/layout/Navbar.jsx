@@ -16,7 +16,7 @@ const NavBar = () => {
     <>
       <div className={c["navbar-container"]}>
         <div className={c.logo}>
-          <NavLink to="/Home">
+          <NavLink to="/">
             <img style={{ width: "8rem" }} src={lightLogo} alt="APTIV logo" />
           </NavLink>
         </div>
@@ -65,7 +65,7 @@ const NavBar = () => {
             ) : (
               <React.Fragment>
                 <li className={`${c["User"]} ${c["log"]}`}>
-                  <NavLink to={"/"}>
+                  <NavLink to={"/Login"}>
                     <span> LOG IN </span>
                     <img className="icons" src={User} />
                   </NavLink>

@@ -1,0 +1,16 @@
+.new-tech {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0 0 0 / 0%);
+    width: 18rem;
+    padding: 0.3rem;
+    border-radius: 17px;
+    letter-spacing: 3px;
+    box-shadow: 2px 4px 3px #000000, -2px -1px 3px #ffffff54;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  .new-tech:hover{
+   background-color:  #3d0000;
+  }

@@ -1,0 +1,84 @@
+.Login-Form {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+  
+}
+
+.Login-Form fieldset {
+  border-radius: 10px;
+  backdrop-filter: blur(7px);
+  background-image: linear-gradient(120deg, #ffffff12, #ff000017);
+  padding: 1em 1rem;
+  border: 1px solid rgba(255, 68, 0, 0.308);
+  animation: fadUp 1s ease-in-out;
+}
+@keyframes fadUp {
+  from {
+    transform: translateY(-10rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.Login-Form fieldset legend {
+  color: orangered;
+  text-align: center;
+  font-size: 3rem;
+  font-family: system-ui;
+  font-weight: 600;
+}
+.Login-Form form {
+  width: 29rem;
+  height: 22rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.Login-Form form h2 {
+  color: orangered;
+}
+.Login-Form form input {
+  text-align: center;
+  margin: 0.6rem;
+  color: white;
+  background: transparent;
+  padding: 0.8rem 2rem;
+  width: 19rem;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  border: 1px solid orangered;
+  border-radius: 22px;
+  cursor: pointer;
+  box-shadow: inset 4px 2px 7px #000000b8;
+}
+.Login-Form form input:focus {
+  outline: none;
+  width: 20rem;
+  border: 1px solid rgb(255, 68, 0);
+}
+.Login-Form form button {
+  border: none;
+  background-color: transparent;
+  border-radius: 22px;
+  width: 10rem;
+  height: 2rem;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  border: 1px solid rgba(255, 68, 0, 0.281);
+  box-shadow: 4px 2px 7px #000000b8;
+}
+.Login-Form form button:hover {
+  background-color: white;
+  color: orangered;
+}
