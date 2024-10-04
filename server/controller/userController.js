@@ -92,3 +92,12 @@ exports.logIn = async (req, res) => {
       .json({ error: "Server error, please try again later" });
   }
 };
+
+exports.getUsers = async (req , res)=>{
+  try {
+    const users = await User.find({}).select("-passWord");
+    res.status(201).json(users);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}
