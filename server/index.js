@@ -6,15 +6,30 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const User = require("./models/users");
+const http = require("http");
+const socketIo = require("socket.io");
+const app = express();
+const server = http.createServer(app);
 
+// Initialize Socket.IO on the HTTP server
+const io = socketIo(server, {
+  cors: {
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST"],
+  },
+});
 dotenv.config();
 
-const app = express();
 app.use(morgan("common"));
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+  req.io = io; 
+  next();
+});
 
 app.use("/api", require("./routes"));
 
@@ -52,8 +67,6 @@ const createInitialRootUser = async () => {
   }
 };
 
-
-
 mongoose
   .connect(DBURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(async () => {
@@ -61,6 +74,18 @@ mongoose
     await createInitialRootUser();
   })
   .catch((err) => console.error("Database connection error:", err));
+
+// Handle socket.io events
+io.on("connection", (socket) => {
+  console.log("New client connected");
+
+  socket.on("disconnect", () => {
+    console.log("Client disconnected");
+  });
+});
+
+// Pass io to your routes or controllers (if needed)
+app.set("socketio", io);
 
 // Server
 const PORT = process.env.PORT;

@@ -6,6 +6,8 @@ exports.createIncidents = async (req, res) => {
     const Incident = new Incidents(newIncident);
     await Incident.save();
 
+    req.io.emit("newIncident", Incident);
+    console.log("New incident emitted:", Incident);
     res.status(201).json(Incident);
   } catch (err) {
     res.status(500).json({ error: err.message });
