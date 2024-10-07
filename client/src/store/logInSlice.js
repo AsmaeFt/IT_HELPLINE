@@ -8,7 +8,7 @@ export const AuthSlice = createSlice({
       token: "",
       role: "",
       userName: "",
-      departemnet: "",
+      department: "",
     },
   },
   reducers: {
@@ -18,7 +18,7 @@ export const AuthSlice = createSlice({
         token: a.payload.token,
         role: a.payload.role,
         userName: a.payload.userName,
-        departemnet: a.payload.departemnet,
+        department: a.payload.department,
       };
     },
     LogOut: (s) => {
@@ -27,7 +27,7 @@ export const AuthSlice = createSlice({
         token: "",
         role: "",
         userName: "",
-        departemnet:"",
+        department:"",
       };
     },
     Users: (s, a) => {

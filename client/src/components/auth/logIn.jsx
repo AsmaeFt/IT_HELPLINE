@@ -23,13 +23,13 @@ const Login = () => {
       const res = await api.post("/user/LogIn", Login);
       const data = res.data;
       const msg = data.message;
-      console.log(res.data);
+    
 
       dispatch(
         loginActions.LogIn({
           role: data.user.role,
           userName: data.user.userName,
-          departemnet: data.user.departemnet,
+          department: data.user.department,
           token: data.token,
         })
       );

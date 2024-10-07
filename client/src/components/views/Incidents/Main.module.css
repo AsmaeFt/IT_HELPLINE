@@ -1,0 +1,36 @@
+.Header {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+.Header span {
+  text-align: center;
+  letter-spacing: 1px;
+  animation: _faderight_1hq6j_1 0.7s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  padding: 0.2rem 0.5rem;
+  border-radius: 17px;
+ 
+}
+.Header span:hover {
+  background-color: rgb(255, 255, 255);
+  color: #950101;
+}
+
+.Header span:hover img {
+  animation: fadeUp 0.3s ease-in-out;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

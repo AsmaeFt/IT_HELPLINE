@@ -53,3 +53,16 @@ exports.isAdmin = async (req, res, next) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+//check if superUser
+exports.issuperUser = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (user.role !== "superUsers") {
+      return res.status(403).json({ error: "OoPS ~~ Access denied ^-^!" });
+    }
+    next();
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

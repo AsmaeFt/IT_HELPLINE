@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controller/userController");
+
 const Middleware = require("../middleware/auth");
 
 router.post("/LogIn", userController.logIn);
@@ -18,5 +19,12 @@ router.post(
 );
 
 router.get("/getUsers", userController.getUsers);
+
+router.post(
+  "/createSuperUser",
+  Middleware.isAuthenticated,
+  Middleware.isAdmin,
+  userController.createUsers
+);
 
 module.exports = router;

@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Circle from "../../../assets/icons/aptivCircle.png";
-import users from "../../../assets/icons/users.png";
 import { useSelector } from "react-redux";
 import ADD from "../../../assets/icons/add.png";
 import c from "./Settings.module.css";
 import BackDrop from "../../UI/BackDrops";
 import UserImage from "../../../assets/icons/User.png";
 import api from "../../api/index";
+import AddTech from "../../individuals/AddTechs";
+
 const Settings = () => {
   const [ShowBackDrop, setShowBackDrop] = useState(false);
   const isAuthentificated = useSelector((st) => st.LogIn.isLoged);
@@ -15,7 +16,7 @@ const Settings = () => {
   const getUsers = useCallback(async () => {
     try {
       const res = await api.get("/user/getUsers");
-       console.log(res.data);
+      console.log(res.data);
       setUsers(res.data);
     } catch (err) {
       console.error(err);
@@ -25,7 +26,7 @@ const Settings = () => {
   useEffect(() => {
     getUsers();
   }, [getUsers]);
-  
+
   return (
     <div className="container">
       <div>
@@ -43,7 +44,7 @@ const Settings = () => {
         {ShowBackDrop && (
           <>
             <BackDrop click={() => setShowBackDrop(false)} />
-            {/*  <AddTechs /> */}
+             <AddTech />
           </>
         )}
         <div className={c["users-list"]}>
@@ -65,6 +66,30 @@ const Settings = () => {
                 )
               );
             })}
+        </div>
+      </div>
+
+      <div>
+        <h1>
+          <img className="icons" src={Circle} />
+          Manage Users Access
+        </h1>
+        <div className={c["files-imports"]}>
+          <input type="file" />
+        </div>
+        <div className="table">
+          <table>
+            <thead>
+              <tr>
+                <th>First Name </th>
+                <th>Last Name </th>
+                <th>Name </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 const User = require("../models/users");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { promisify } = require("util");
+
 
 //CREATE USERS
 

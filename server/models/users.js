@@ -71,5 +71,6 @@ userSchema.statics.createFromRequestBody = function (body) {
   }, {});
   return new this(userData);
 };
+
 const User = mongoose.model("users", userSchema);
 module.exports = User;

@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import LandingPage from "./components/routes/LandingPage";
 import NavBar from "./components/layout/Navbar";
 import Admin from "./components/routes/Admin";
 import { useSelector } from "react-redux";
 import Login from "./components/auth/logIn";
+import Incidents from "./components/routes/User";
 function App() {
   const isAuthentificated = useSelector((st) => st.LogIn.isLoged);
   return (
@@ -22,19 +23,16 @@ function App() {
                 <Admin />
               ) : isAuthentificated.role === "superUsers" ? (
                 <>
-                  <div>hh</div>
-                  {/* <Incidents /> */}
+                  <Incidents />
                 </>
               ) : (
                 <>
-                  <div>hh</div>
                   <Login />
                 </>
               )
             ) : (
               <>
-                <div>hh</div>
-                /* <LogIn /> */
+                <Login />
               </>
             )
           }
