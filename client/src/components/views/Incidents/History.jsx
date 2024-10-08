@@ -38,7 +38,7 @@ const History = () => {
         <table>
           <thead>
             <tr>
-              <td>incidentCategory</td>
+              <td>incident Category</td>
               <td>description</td>
             </tr>
           </thead>

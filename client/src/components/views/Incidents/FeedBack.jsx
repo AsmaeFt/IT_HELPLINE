@@ -3,10 +3,13 @@ import { useSelector } from "react-redux";
 
 const FeedBack = () => {
   const isAutheticated = useSelector((st) => st.LogIn.isLoged);
+  const handleSubmit = ()=> {
+
+  }
 
   return (
     <div className={c.container}>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h1>if You have any issues please declare Your FeedBack</h1>
         <div className={c["user-infos"]}>
           <label>
@@ -55,3 +58,4 @@ const FeedBack = () => {
 };
 
 export default FeedBack;
+
