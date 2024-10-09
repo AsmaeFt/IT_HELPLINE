@@ -54,8 +54,8 @@
   border-radius: 17px;
   border: none;
   color: white;
-/*   background-color: rgba(255, 0, 0, 0.637); */
-  border:3px solid rgba(255, 0, 0, 0.637);
+  /*   background-color: rgba(255, 0, 0, 0.637); */
+  border: 3px solid rgba(255, 0, 0, 0.637);
   background-color: transparent;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -69,4 +69,24 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+.level {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.level span {
+  text-align: center;
+  min-width: 6rem;
+  padding: 0.3rem;
+  border-radius: 50px;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.level span:hover {
+  min-width: 8rem;
+  filter: drop-shadow(0 0 0.4em #ff0000b9);
 }

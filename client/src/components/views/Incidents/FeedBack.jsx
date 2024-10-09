@@ -40,7 +40,8 @@ const FeedBack = () => {
         console.log(res.data);
         dispatch(IncidentsActions.addIncidents(res.data));
         message.success(
-          "Your Feedback has been successfully created. The IT team will check it soon.",5
+          "Your Feedback has been successfully created. The IT team will check it soon.",
+          5
         );
       } catch (err) {
         console.error(err);
@@ -100,6 +101,14 @@ const FeedBack = () => {
               required
             />
           </label>
+          <div className={c.level}>
+            <h3>Describe the level of danger :</h3>
+            <span style={{backgroundColor:'yellow'}}>Low</span>
+            <span style={{backgroundColor:'orangered'}}>Medium</span>
+            <span style={{backgroundColor:'red'}}>Hight</span>
+            <p>*by default it is low </p>
+          </div>
+
           <label>
             <p>Attach a screen if needed or a screenshot :</p>
           </label>

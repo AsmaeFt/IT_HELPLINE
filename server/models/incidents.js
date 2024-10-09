@@ -40,7 +40,7 @@ const incidentSchema = new Schema({
     type: String,
     enum: ["low", "medium", "high"],
     required: [true, "dangerLevel is required"],
-    default: "low", 
+    default: "low",
   },
 
   createdAt: {
@@ -49,7 +49,6 @@ const incidentSchema = new Schema({
     immutable: true,
   },
 });
-
 
 incidentSchema.statics.createFromRequestBody = function (body) {
   const allowedFields = [
