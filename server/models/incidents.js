@@ -30,12 +30,26 @@ const incidentSchema = new Schema({
   incidentsPic: {
     type: String,
   },
+  incidentStatus: {
+    type: String,
+    trim: true,
+    enum: ["not checked yet", "on processing", "done"],
+    default: "not checked yet",
+  },
+  dangerLevel: {
+    type: String,
+    enum: ["low", "medium", "high"],
+    required: [true, "dangerLevel is required"],
+    default: "low", 
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,
     immutable: true,
   },
 });
+
 
 incidentSchema.statics.createFromRequestBody = function (body) {
   const allowedFields = [

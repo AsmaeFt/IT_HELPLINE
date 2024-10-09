@@ -1,10 +1,14 @@
 import c from "./FeedBack.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import api from "../../api/index";
 import { useCallback, useEffect, useState } from "react";
+import * as IncidentsActions from "../../../store/incidentSlice";
+import { message } from "antd";
 
 const FeedBack = () => {
   const isAutheticated = useSelector((st) => st.LogIn.isLoged);
+  const dispatch = useDispatch();
+  const Incidents = useSelector((s) => s.Icidents.Incidents);
 
   const [Input, setInput] = useState({
     userContact: "",
@@ -12,8 +16,6 @@ const FeedBack = () => {
     description: "",
     file: null,
   });
-
-  console.log(Input);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,15 +25,32 @@ const FeedBack = () => {
     }));
   };
 
-  const handleSubmit = useCallback(async () => {
-    try {
-      const res = await api.post("incident/createIncident");
-      console.log(res.data);
-    } catch (err) {
-      console.error(err);
-    }
-  }, []);
-  useEffect(() => {}, []);
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      const incidentInfo = {
+        ...Input,
+        nameUser: isAutheticated.userName,
+        departement: isAutheticated.department,
+      };
+      console.log(incidentInfo);
+
+      try {
+        const res = await api.post("incident/createIncident", incidentInfo);
+        console.log(res.data);
+        dispatch(IncidentsActions.addIncidents(res.data));
+        message.success(
+          "Your Feedback has been successfully created. The IT team will check it soon.",5
+        );
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    [Input, dispatch]
+  );
+  useEffect(() => {
+    handleSubmit();
+  }, [handleSubmit]);
 
   return (
     <div className={c.container}>
@@ -84,12 +103,7 @@ const FeedBack = () => {
           <label>
             <p>Attach a screen if needed or a screenshot :</p>
           </label>
-          <input
-            name="file"
-            type="file"
-            onChange={handleInputChange}
-            required
-          />
+          <input name="file" type="file" onChange={handleInputChange} />
         </div>
         <button type="submit">Submit FeedBack </button>
       </form>
