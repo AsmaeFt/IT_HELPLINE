@@ -5,6 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import * as IncidentsActions from "../../../store/incidentSlice";
 import { message } from "antd";
 
+//icons
+import hight from "../../../assets/icons/dangerHight.png";
+import warnning from "../../../assets/icons/warnning.png";
+import medium from "../../../assets/icons/medium.png";
+
+import done from "../../../assets/icons/done.png";
+import inProgress from "../../../assets/icons/inProgress.png";
+import onHold from "../../../assets/icons/onHold.png";
+
 const History = () => {
   const dispatch = useDispatch();
   const Incidents = useSelector((s) => s.Icidents.Incidents);
@@ -36,6 +45,22 @@ const History = () => {
     };  */
   }, [getIncidents]);
 
+  const customLevel = (l) => {
+    return l === "low"
+      ? { color: "yellow", icon: warnning }
+      : l === "medium"
+      ? { color: "orange", icon: medium }
+      : { color: "red", icon: hight };
+  };
+
+  const customStatus = (s) => {
+    return s === "not checked yet"
+      ? { color: "red", icon: onHold }
+      : s === "on processing"
+      ? { color: "yellow", icon: inProgress }
+      : { color: "green", icon: done };
+  };
+
   return (
     <React.Fragment>
       <div className="table">
@@ -53,8 +78,34 @@ const History = () => {
               <tr key={i}>
                 <td>{c.incidentCategory}</td>
                 <td>{c.description}</td>
-                <td>{c.incidentStatus}</td>
-                <td>{c.dangerLevel}</td>
+                <td>
+                  <div className={c["status-options"]}>
+                    <span
+                      className="level"
+                      style={{ color: customStatus(c.incidentStatus).color }}
+                    >
+                      {c.incidentStatus}
+                      <img
+                        className="icons"
+                        src={customLevel(c.incidentStatus).icon}
+                        alt="status icon"
+                      />
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <span
+                    className="level"
+                    style={{ color: customLevel(c.dangerLevel).color }}
+                  >
+                    {c.dangerLevel}
+                    <img
+                      className="icons"
+                      src={customLevel(c.dangerLevel).icon}
+                      alt="level of danger icon"
+                    />
+                  </span>
+                </td>
               </tr>
             ))}
           </tbody>

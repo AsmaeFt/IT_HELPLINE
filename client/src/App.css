@@ -97,3 +97,34 @@
     transform: translateY(0);
   }
 }
+
+.level {
+  background-color: rgba(240, 248, 255, 0.11);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 17px;
+}
+.status {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.status:hover {
+  background-color: white;
+  
+}
+.status:hover img{
+    animation: fadRight 0.3s ease;
+}
+
+
+@keyframes fadRight {
+    0% {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
