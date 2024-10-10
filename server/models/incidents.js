@@ -38,7 +38,7 @@ const incidentSchema = new Schema({
   },
   dangerLevel: {
     type: String,
-    enum: ["low", "medium", "high"],
+    enum: ["low", "medium", "hight"],
     required: [true, "dangerLevel is required"],
     default: "low",
   },
@@ -58,6 +58,8 @@ incidentSchema.statics.createFromRequestBody = function (body) {
     "incidentCategory",
     "description",
     "incidentsPic",
+    "incidentStatus",
+    "dangerLevel",
   ];
   const incidentData = allowedFields.reduce((obj, field) => {
     if (body[field] !== undefined) {

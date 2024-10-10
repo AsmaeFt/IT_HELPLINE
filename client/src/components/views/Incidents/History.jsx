@@ -73,9 +73,15 @@ const History = () => {
               <td>Danger Level</td>
             </tr>
           </thead>
+
           <tbody>
             {Incidents.map((c, i) => (
-              <tr key={i}>
+              <tr
+                key={i}
+                style={{
+                  backgroundColor: c.dangerLevel === "hight" ? "#ff000075" : "",
+                }}
+              >
                 <td>{c.incidentCategory}</td>
                 <td>{c.description}</td>
                 <td>
@@ -87,7 +93,7 @@ const History = () => {
                       {c.incidentStatus}
                       <img
                         className="icons"
-                        src={customLevel(c.incidentStatus).icon}
+                        src={customStatus(c.incidentStatus).icon}
                         alt="status icon"
                       />
                     </span>

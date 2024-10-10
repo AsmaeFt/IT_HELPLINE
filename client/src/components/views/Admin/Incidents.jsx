@@ -18,7 +18,24 @@ import onHold from "../../../assets/icons/onHold.png";
 const Incidents = () => {
   const dispatch = useDispatch();
   const Incidents = useSelector((s) => s.Icidents.Incidents);
-  const [ShowStatus, setShowStatus] = useState(false);
+
+  const status = ["not checked yet", "on processing", "done"];
+
+  const getNextStatus = (currentStatus) => {
+    if (currentStatus === "done") {
+      message.warning("The status is already done ^^");
+      return null;
+    }
+
+    const currentIndex = status.indexOf(currentStatus);
+    const nextIndex = currentIndex + 1;
+
+    if (nextIndex >= status.length) {
+      return currentStatus;
+    }
+
+    return status[nextIndex];
+  };
 
   const getIncidents = useCallback(async () => {
     try {
@@ -63,6 +80,27 @@ const Incidents = () => {
       : { color: "green", icon: done };
   };
 
+  const updateIncident = (id, status) => {
+    const newStatus = getNextStatus(status);
+
+    if (newStatus === null) {
+      return;
+    }
+
+    try {
+      dispatch(
+        IncidentsActions.UpdateStatus({
+          id: id,
+          newStatus,
+        })
+      );
+      message.success("Incident status updated successfully.");
+    } catch (err) {
+      console.error(err);
+      message.error("Failed to update incident status. Please try again.");
+    }
+  };
+
   return (
     <div className="container">
       <h1>
@@ -82,12 +120,23 @@ const Incidents = () => {
           </thead>
           <tbody>
             {Incidents.map((inci, i) => (
-              <tr key={i}>
+              <tr
+                key={i}
+                style={{
+                  backgroundColor:
+                    inci.dangerLevel === "hight" ? "#ff000075" : "",
+                }}
+              >
                 <td>{inci.incidentCategory}</td>
                 <td>{inci.description}</td>
 
                 <td>
-                  <div className={c["status-options"]}>
+                  <div
+                    className={c["status-options"]}
+                    onClick={() =>
+                      updateIncident(inci._id, inci.incidentStatus)
+                    }
+                  >
                     <span
                       className={`${c.level} ${c.status}`}
                       style={{ color: customStatus(inci.incidentStatus).color }}
@@ -95,7 +144,7 @@ const Incidents = () => {
                       {inci.incidentStatus}
                       <img
                         className="icons"
-                        src={customLevel(inci.incidentStatus).icon}
+                        src={customStatus(inci.incidentStatus).icon}
                         alt="status icon"
                       />
                     </span>

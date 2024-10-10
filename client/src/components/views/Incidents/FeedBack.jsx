@@ -15,6 +15,7 @@ const FeedBack = () => {
     incidentCategory: "",
     description: "",
     file: null,
+    dangerLevel: "",
   });
 
   const handleInputChange = (e) => {
@@ -52,6 +53,8 @@ const FeedBack = () => {
   useEffect(() => {
     handleSubmit();
   }, [handleSubmit]);
+
+
 
   return (
     <div className={c.container}>
@@ -103,9 +106,39 @@ const FeedBack = () => {
           </label>
           <div className={c.level}>
             <h3>Describe the level of danger :</h3>
-            <span style={{backgroundColor:'yellow'}}>Low</span>
-            <span style={{backgroundColor:'orangered'}}>Medium</span>
-            <span style={{backgroundColor:'red'}}>Hight</span>
+            <span
+              name="dangerLevel"
+              onClick={() =>
+                handleInputChange({
+                  target: { name: "dangerLevel", value: "low" },
+                })
+              }
+              style={{ backgroundColor: "yellow" }}
+            >
+              Low
+            </span>
+            <span
+              name="dangerLevel"
+              onClick={() =>
+                handleInputChange({
+                  target: { name: "dangerLevel", value: "medium" },
+                })
+              }
+              style={{ backgroundColor: "orangered" }}
+            >
+              Medium
+            </span>
+            <span
+              name="dangerLevel"
+              onClick={() =>
+                handleInputChange({
+                  target: { name: "dangerLevel", value: "high" },
+                })
+              }
+              style={{ backgroundColor: "red" }}
+            >
+              Hight
+            </span>
             <p>*by default it is low </p>
           </div>
 
