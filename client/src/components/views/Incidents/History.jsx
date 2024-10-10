@@ -58,7 +58,7 @@ const History = () => {
       ? { color: "red", icon: onHold }
       : s === "on processing"
       ? { color: "yellow", icon: inProgress }
-      : { color: "green", icon: done };
+      : { color: "lime", icon: done };
   };
 
   return (

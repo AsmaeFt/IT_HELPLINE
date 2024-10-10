@@ -77,7 +77,7 @@ const Incidents = () => {
       ? { color: "red", icon: onHold }
       : s === "on processing"
       ? { color: "yellow", icon: inProgress }
-      : { color: "green", icon: done };
+      : { color: "lime", icon: done };
   };
 
   const updateIncident = (id, status) => {
@@ -112,6 +112,7 @@ const Incidents = () => {
         <table>
           <thead>
             <tr>
+              <td>Date of Incident</td>
               <td>Incident Category</td>
               <td>Description</td>
               <td>Status</td>
@@ -127,6 +128,7 @@ const Incidents = () => {
                     inci.dangerLevel === "hight" ? "#ff000075" : "",
                 }}
               >
+                <td>{inci.createdAt}</td>
                 <td>{inci.incidentCategory}</td>
                 <td>{inci.description}</td>
 
